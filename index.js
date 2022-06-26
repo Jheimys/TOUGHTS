@@ -8,6 +8,15 @@ const app = express()
 
 const conn = require('./db/conn')
 
+//models
+const Tought = require('./models/Tought')
+const User = require('./models/User')
+
+// Imports Routes
+const toughtsRoutes = require('./routes/toughtsRoutes')
+//Imports controllers
+const ToughtController = require('./controllers/ToughtController')
+
 //template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -58,7 +67,12 @@ app.use((req, res, next) => {
 })
 
 
+//Routes
+app.use('/toughts', toughtsRoutes)
+app.get('/', ToughtController.showToughts)
+
 conn
+    //.sync({force: true})
     .sync()
     .then(() => {
         app.listen(3000)
