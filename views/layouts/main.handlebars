@@ -22,8 +22,13 @@
         <ul>
             <li><a href="/">Pensamento</a></li>
             <!-- URLs apos autenticação -->
-            <li><a href="/login">Entrar</a></li>
-            <li><a href="/register">Registar</a></li>
+            {{#if session.userid}}
+                <li><a href="/toughts/dashboard">Dashboad</a></li>
+                <li><a href="/logout">Sair</a></li>
+            {{else}}
+                <li><a href="/login">Entrar</a></li>
+                <li><a href="/register">Registar</a></li>
+            {{/if}}
 
         </ul>
     </nav>
