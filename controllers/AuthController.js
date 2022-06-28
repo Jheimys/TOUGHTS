@@ -27,6 +27,8 @@ module.exports = class AuthController {
 
         if(checkifUseExist){
             req.flash('message', 'O e-mail já esta em uso!')
+            console.log(req);
+            
             res.render('auth/register')
 
             return
@@ -56,5 +58,10 @@ module.exports = class AuthController {
         }catch(err) {
             console.log(err)
         }
+    }
+
+    static async logout(req, res) {
+        req.session.destroy()
+        res.redirect('/login')
     }
 }
