@@ -10,7 +10,9 @@ const checkAuth = require('../helpers/auth').checkAuth
 
 
 //Rotas
-router.get('/add',checkAuth, ToughtController.creatTought)
+router.get('/add',checkAuth, ToughtController.createTought)
+router.post('/add',checkAuth, ToughtController.createToughtSave)
+
 router.get('/dashboard',checkAuth, ToughtController.dashboard)
 router.get('/', ToughtController.showToughts)
 
