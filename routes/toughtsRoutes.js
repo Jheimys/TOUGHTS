@@ -16,4 +16,5 @@ router.post('/add',checkAuth, ToughtController.createToughtSave)
 router.get('/dashboard',checkAuth, ToughtController.dashboard)
 router.get('/', ToughtController.showToughts)
 
+router.post('/remove',checkAuth, ToughtController.removeTought)
 module.exports = router
